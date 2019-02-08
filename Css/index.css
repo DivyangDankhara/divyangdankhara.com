@@ -1,0 +1,15 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width:100%;
+    font-family: sans-serif;
+}
+
+
+
+.aboutMeImage{
+    border-radius: 50%;
+    height: 200px;
+    float:left;
+}
+
