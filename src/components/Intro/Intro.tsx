@@ -1,20 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Intro: React.FC = () => {
+  useEffect(() => {
+    const hand = document.querySelector('.emoji.wave-hand') as HTMLElement;
+    if (!hand) return;
+
+    const waveOnLoad = () => {
+      hand.classList.add('wave');
+      setTimeout(() => hand.classList.remove('wave'), 2000);
+    };
+
+    const onHover = () => hand.classList.add('wave');
+    const onOut = () => hand.classList.remove('wave');
+
+    setTimeout(waveOnLoad, 1000);
+    hand.addEventListener('mouseover', onHover);
+    hand.addEventListener('mouseout', onOut);
+
+    return () => {
+      hand.removeEventListener('mouseover', onHover);
+      hand.removeEventListener('mouseout', onOut);
+    };
+  }, []);
+
   return (
     <header className="intro">
       <h1 className="intro__hello">
         Hello!
-        <span className="emoji wave-hand animated" role="img" aria-label="waving hand" />
+        <span className="emoji wave-hand animated" aria-label="waving hand" role="img"></span>
       </h1>
 
       <h2 className="intro__tagline">
-        I'm <span className="name">Divyang Dankhara</span>, a user-focused software developer passionate about crafting clean, intuitive digital experiences and simplifying complex systems through thoughtful design and engineering.
+        I&apos;m <span className="name">Divyang Dankhara</span>, a user-focused software developer passionate about
+        crafting clean, intuitive digital experiences and simplifying complex systems through thoughtful design and
+        engineering.
       </h2>
 
       <h3 className="intro__contact">
         <span>Get in touch </span>
-        <span className="emoji pointer" role="img" aria-label="pointing finger" />
+        <span className="emoji pointer" aria-label="pointer" role="img"></span>
         <span>
           <a
             href="mailto:divyangdankhara007@outlook.com"
