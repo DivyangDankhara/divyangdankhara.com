@@ -1,9 +1,14 @@
 {
+  "author": "Divyang Dankhara",
   "name": "divyangdankhara.com",
   "version": "2.0.0",
-  "private": true,
   "type": "module",
+  "license": "MIT",
   "homepage": "https://divyangdankhara.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DivyangDankhara/divyangdankhara.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
