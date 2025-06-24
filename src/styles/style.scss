@@ -16,3 +16,13 @@ h1 {
 p {
   margin: 1rem 2rem;
 }
+
+#top-button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
