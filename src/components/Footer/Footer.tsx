@@ -5,12 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__copyright">
-        <div className="top">
-          <span>Designed &amp; Developed by</span>
-        </div>
-        <div className="bottom">
-          <span>Divyang Dankhara</span>
-        </div>
+        <p className='section__content'>© {new Date().getFullYear()} Divyang Dankhara. All rights reserved.</p>
       </div>
       <div className="footer__links">
         {socialLinks.map((link, index) => (
