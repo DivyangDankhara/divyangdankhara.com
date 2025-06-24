@@ -1,76 +1,86 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Divyang</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="stylesheet" href="Css/index.css" />
-        <link rel="stylesheet" href="Css/index_nev.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divyang Dankhara – Portfolio</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">Divyang Dankhara</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#current">What I'm Working On</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <script type="text/javascript">
+  <section class="hero">
+    <div class="container">
+      <h1 class="fade-in">Hi, I'm Divyang Dankhara</h1>
+      <p class="fade-in delay-1">Senior Software Developer | Specializing in .NET Core, Blazor, Azure</p>
+      <a class="btn fade-in delay-2" href="#contact">Get in Touch</a>
+    </div>
+  </section>
 
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I'm a passionate software developer focused on modernizing legacy systems and building scalable web applications. Skilled in .NET Core, Azure, Syncfusion, React, and more.
+      </p>
+    </div>
+  </section>
 
-            // menu toggle-button
-            $(document).ready(function(){
-                $(".menu-icon").on("click",function(){
-                    $("nav ul").toggleClass("showing");
-                });
-            });
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <ul>
+        <li><strong>Descartes Systems Group</strong> – Software Developer (Sep 2021 – May 2025)</li>
+        <li><strong>Green PI Inc</strong> – Embedded Developer (May 2021 – Aug 2021)</li>
+        <li><strong>EHT Group Ltd.</strong> – Full Stack Developer (Jan 2021 – Apr 2021)</li>
+      </ul>
+    </div>
+  </section>
 
-            $(window).on("scroll",function(){
-                if($(window).scrollTop()){
-                    $('nav').addClass('black');
-                }
-                else{
-                    $('nav').removeClass('black');
-                }
-            })
+  <section id="current" class="section">
+    <div class="container">
+      <h2>What I'm Working On</h2>
+      <p>Currently working on Typemaster – an interactive typing tutor built with modern web tech. Also exploring AI integrations with developer workflows.</p>
+    </div>
+  </section>
 
-        </script>
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projects</h2>
+      <ul>
+        <li>Typemaster – Typing education app with full keyboard training</li>
+        <li>CargoMatch – Legacy modernization using Blazor & .NET Core</li>
+        <li>NZ Post Security App – Role-based access controls in Blazor</li>
+      </ul>
+    </div>
+  </section>
 
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:divyangdankhara007@outlook.com">divyangdankhara007@outlook.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/divyangdankhara" target="_blank">linkedin.com/in/divyangdankhara</a></p>
+    </div>
+  </section>
 
-
-    </head>
-    <body>
-        <div class="container">
-            
-            <header>
-                <div>
-                    <nav>
-                        <div class="menu-icon">
-                            <i class="fa fa-bars fa-2x"></i>
-                        </div>
-                        <div class="logo">
-                            Divyang Dankhara
-                        </div>
-                        <div class="menu">
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Projects</a></li>
-                                <li><a href="#">Resume</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-
-                </div>
-            </header>
-
-            <div class="containerAboutMe">
-                <div class="aboutMe">
-                    <div class="aboutMeImage">
-                        <img src="Images/Div.jpg" class="aboutMeImage"/>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione voluptatum totam enim quis placeat fuga dignissimos quos sed modi velit delectus, ex adipisci harum at tempore inventore maiores nihil eligendi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium modi quasi dolor fugiat distinctio iste labore! Facere velit nulla illo accusantium maxime nemo, sed iusto in nam quis, cum doloremque? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro beatae vitae ullam tenetur quibusdam, ut asperiores cumque velit cupiditate aut sint modi dignissimos atque veritatis consequuntur nulla qui fugiat dolor.
-                        </p>
-                    </div>
-                </div>
-  
-            </div>
-        </div>
-    </body>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Divyang Dankhara. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
 </html>
