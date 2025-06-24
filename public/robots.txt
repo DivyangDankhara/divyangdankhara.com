@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: https://divyangdankhara.github.io/sitemap.xml
+Sitemap: https://wwwdivyangdankhara.com/sitemap.xml
