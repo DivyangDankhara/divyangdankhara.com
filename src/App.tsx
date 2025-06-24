@@ -18,8 +18,7 @@ const App: React.FC = () => {
       <Switch />
       <Intro />
       <Background />
-      <p>Outside of work, I'm developing a side project ...</p>
-      <EmploymentStatus />
+ 
       <Skills data={skillsData} />
       <Experience data={experienceData} />
       <Footer />

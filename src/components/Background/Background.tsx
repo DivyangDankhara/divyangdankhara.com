@@ -1,4 +1,5 @@
 import React from 'react';
+import EmploymentStatus from '../EmploymentStatus/EmploymentStatus';
 
 const Background: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const Background: React.FC = () => {
           preparing for my next big move, and always on the lookout for meaningful, impactful work with great teams.
         </p>
 
-        {/* TODO: Add <EmploymentStatus /> component here */}
+        <EmploymentStatus />
       </div>
     </section>
   );

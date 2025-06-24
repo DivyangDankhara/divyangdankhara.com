@@ -4,7 +4,7 @@ const EmploymentStatus: React.FC = () => {
   return (
     <a
       className="status"
-      href="/documents/resume.pdf" // ← Replace with actual resume path
+      href="https://www.linkedin.com/in/divyangdankhara/" //
       target="_blank"
       rel="noopener noreferrer"
     >
