@@ -1,15 +1,49 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Divyang Dankhara</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
-<div id="site">
-  {% include switch.html %}
-  {% include intro.html %}
-  {% include background.html %}
-  {% include skills.html %}
-  {% include experience.html %}
-  <!-- {% include featured-projects.html %}
-  {% include other-projects.html %} -->
-  {% include footer.html %}
-  {% include top-button.html %}
-</div>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Divyang Dankhara" />
+    <meta property="og:description" content="Design-minded front-end engineer building beautiful web experiences." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://divyangdankhara.com" />
+    <meta property="og:site_name" content="Divyang Dankhara" />
+    <meta property="og:image" content="/images/cover.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- SEO -->
+    <meta name="description" content="Design-minded front-end engineer building beautiful web experiences." />
+    <meta name="keywords" content="design, development, web, divyang, dankhara, javascript, portfolio" />
+    <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
+
+    <!-- Structured Data -->
+    <meta itemprop="name" content="Divyang Dankhara" />
+    <meta itemprop="description" content="Design-minded front-end engineer building beautiful web experiences." />
+    <meta itemprop="image" content="/images/cover.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="https://divyangdankhara.com" />
+    <meta name="twitter:site" content="@divyang" />
+    <meta name="twitter:creator" content="@divyang" />
+    <meta name="twitter:title" content="Divyang Dankhara" />
+    <meta name="twitter:description" content="Design-minded front-end engineer building beautiful web experiences." />
+    <meta name="twitter:image:src" content="/images/cover.png" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

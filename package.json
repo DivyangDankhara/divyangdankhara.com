@@ -1,28 +1,28 @@
 {
   "name": "divyangdankhara.com",
-  "version": "0.0.0",
-  "description": "Design-minded front-end software engineer focused on building beautiful interfaces and experiences",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/divyangdankhara"
-  },
-  "homepage": "https://github.com/divyangdankhara",
-  "main": "gulpfile.js",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "gulp serve --watch",
-    "build": "gulp build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit",
+    "deploy": "gh-pages -d dist"
   },
-  "author": "Divyang Dankhara",
-  "license": "ISC",
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "scrollreveal": "^4.0.9"
+  },
   "devDependencies": {
-    "@nuscout/eslint-config": "^0.2.1",
-    "browser-sync": "^2.26.7",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^7.0.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-eslint": "^6.0.0",
-    "gulp-imagemin": "6.0.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-uglify": "3.0.2"
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@types/scrollreveal": "^0.0.11",
+    "@vitejs/plugin-react": "^4.6.0",
+    "gh-pages": "^6.3.0",
+    "sass": "^1.78.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.2.0"
   }
 }
