@@ -10,8 +10,6 @@ const Footer: React.FC = () => {
         </div>
         <div className="bottom">
           <span>Divyang Dankhara</span>
-          <img className="emoji" src="/img/emojis/rockon.png" alt="rock on emoji" />
-          <span>{new Date().getFullYear()}</span>
         </div>
       </div>
       <div className="footer__links">
