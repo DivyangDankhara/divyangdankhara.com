@@ -7,6 +7,8 @@ import Skills from './components/Skills/Skills';
 import skillsData from './data/skills';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import experienceData from './data/experience';
+import Experience from './components/Experience/Experience';
 
 const App: React.FC = () => {
   useScrollReveal();
@@ -18,6 +20,7 @@ const App: React.FC = () => {
       <p>Outside of work, I'm developing a side project ...</p>
       <EmploymentStatus />
       <Skills data={skillsData} />
+      <Experience data={experienceData} />
 
 
 
