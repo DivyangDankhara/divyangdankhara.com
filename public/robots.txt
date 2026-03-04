@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://divyangdankhara.github.io/sitemap.xml

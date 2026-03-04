@@ -1,49 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Divyang Dankhara</title>
-    <link rel="icon" type="image/png" href="/favicon.png" />
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Divyang Dankhara — Engineering Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0B1829; --navy2: #112240; --teal: #0ABFBC; --teal2: #07908D;
+    --white: #F0F4F8; --muted: #8899AA; --card: #142035; --border: rgba(10,191,188,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--navy); color: var(--white); font-family: 'Outfit', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.6; }
+  .orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
+  .orb-1 { width: 600px; height: 600px; background: rgba(10,191,188,0.08); top: -200px; right: -150px; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(245,166,35,0.06); bottom: 200px; left: -100px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Divyang Dankhara" />
-    <meta property="og:description" content="Design-minded front-end engineer building beautiful web experiences." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://divyangdankhara.com" />
-    <meta property="og:site_name" content="Divyang Dankhara" />
-    <meta property="og:image" content="/images/cover.png" />
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="800" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:locale" content="en_US" />
+  nav { position: sticky; top: 0; z-index: 100; padding: 18px 0; background: rgba(11,24,41,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--teal); letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
 
-    <!-- SEO -->
-    <meta name="description" content="Design-minded front-end engineer building beautiful web experiences." />
-    <meta name="keywords" content="design, development, web, divyang, dankhara, javascript, portfolio" />
-    <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
+  .hero { padding: 110px 0 90px; }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--teal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 6vw, 68px); line-height: 1.1; color: var(--white); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero-subtitle { font-size: 17px; color: var(--muted); max-width: 540px; margin-bottom: 52px; opacity: 0; animation: fadeUp 0.6s 0.35s forwards; }
+  .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s 0.5s forwards; }
+  .stat-number { font-family: 'DM Serif Display', serif; font-size: 38px; color: var(--teal); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
 
-    <!-- Structured Data -->
-    <meta itemprop="name" content="Divyang Dankhara" />
-    <meta itemprop="description" content="Design-minded front-end engineer building beautiful web experiences." />
-    <meta itemprop="image" content="/images/cover.png" />
+  .section { padding: 80px 0; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 4vw, 40px); color: var(--white); margin-bottom: 44px; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="https://divyangdankhara.com" />
-    <meta name="twitter:site" content="@divyang" />
-    <meta name="twitter:creator" content="@divyang" />
-    <meta name="twitter:title" content="Divyang Dankhara" />
-    <meta name="twitter:description" content="Design-minded front-end engineer building beautiful web experiences." />
-    <meta name="twitter:image:src" content="/images/cover.png" />
+  .projects { display: flex; flex-direction: column; gap: 28px; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal2)); opacity: 0; transition: opacity 0.3s; }
+  .project-card:hover { border-color: rgba(10,191,188,0.4); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .project-company { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--white); line-height: 1.2; }
+  .project-period { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; padding: 4px 12px; border: 1px solid var(--border); border-radius: 20px; margin-top: 4px; }
+  .project-desc { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
+  .case-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+  .case-block { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .case-block-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+  .case-block-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  .metrics { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+  .metric { background: rgba(10,191,188,0.07); border: 1px solid rgba(10,191,188,0.2); border-radius: 10px; padding: 14px 18px; flex: 1; min-width: 120px; }
+  .metric-value { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--teal); line-height: 1; }
+  .metric-desc { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal2); background: rgba(10,191,188,0.06); border: 1px solid rgba(10,191,188,0.15); border-radius: 4px; padding: 4px 10px; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+  .skill-group-title { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+  .skill-list { display: flex; flex-direction: column; gap: 9px; }
+  .skill-item { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .skill-item::before { content: '—'; color: var(--teal); font-size: 10px; }
+
+  .timeline { display: flex; flex-direction: column; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--teal), transparent); }
+  .timeline-item { padding-left: 32px; padding-bottom: 32px; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: var(--teal); border: 2px solid var(--navy); box-shadow: 0 0 12px rgba(10,191,188,0.5); }
+  .timeline-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .timeline-role { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .timeline-company { font-size: 14px; color: var(--muted); }
+
+  .cta-section { padding: 60px 0 80px; }
+  .cta-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 64px 48px; position: relative; overflow: hidden; text-align: center; }
+  .cta-box::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(10,191,188,0.08) 0%, transparent 70%); }
+  .cta-box h2 { font-family: 'DM Serif Display', serif; font-size: 36px; margin-bottom: 14px; position: relative; }
+  .cta-box p { color: var(--muted); font-size: 15px; max-width: 440px; margin: 0 auto 32px; position: relative; }
+  .btn { display: inline-block; background: var(--teal); color: var(--navy); font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; padding: 14px 36px; border-radius: 8px; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s, transform 0.2s; position: relative; }
+  .btn:hover { background: #0dd4d0; transform: translateY(-2px); }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.08em; }
+  footer span { color: var(--teal); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 650px) {
+    .case-blocks { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+    .project-card { padding: 24px; }
+    .cta-box { padding: 40px 20px; }
+    .nav-links { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <div class="container">
+    <span class="nav-logo">divyang.dev</span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Senior .NET Architect &amp; Full Stack Engineer</p>
+    <h1>Building systems that<br/><em>last decades,</em><br/>not just sprints.</h1>
+    <p class="hero-subtitle">6+ years delivering enterprise-grade .NET systems at scale. Specialist in legacy modernization, CI/CD governance, and codebase stabilisation for long-term production environments.</p>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-number">80%</div><div class="stat-label">Server load reduction</div></div>
+      <div class="stat-item"><div class="stat-number">30%</div><div class="stat-label">API performance gain</div></div>
+      <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Monoliths modernised</div></div>
+      <div class="stat-item"><div class="stat-number">6+</div><div class="stat-label">Years enterprise .NET</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section class="section" id="projects">
+  <div class="container">
+    <p class="section-label">Case Studies</p>
+    <h2 class="section-title">Selected Projects</h2>
+    <div class="projects">
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div>
+            <p class="project-company">Descartes Systems Group · Waterloo, Canada</p>
+            <h3 class="project-title">Enterprise Logistics Platform — Monolith to Microservices Migration</h3>
+          </div>
+          <span class="project-period">Sep 2021 – Jun 2025</span>
+        </div>
+        <p class="project-desc">Led the end-to-end architectural modernisation of three high-volume production logistics applications at a publicly traded global supply chain company. The platform underpinned mission-critical freight and logistics workflows serving enterprise clients worldwide.</p>
+        <div class="case-blocks">
+          <div class="case-block">
+            <div class="case-block-label">🔴 The Problem</div>
+            <div class="case-block-text">Three monolithic .NET Framework apps with tightly coupled modules, slow release cycles, and growing maintenance costs. Performance degradation under load and no scalable path forward.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">🔧 The Approach</div>
+            <div class="case-block-text">Defined a phased migration to .NET Core and Blazor microservices. Redesigned APIs with ASP.NET Core and EF Core, refactored SQL stored procedures, and introduced Azure DevOps CI/CD with structured logging and OpenAPI documentation.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">✅ The Outcome</div>
+            <div class="case-block-text">Zero-downtime migration of all three apps. 30% API performance improvement, 80% server load reduction, faster release cadence, and a fully documented codebase ready for long-term maintenance.</div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-value">80%</div><div class="metric-desc">Server load reduction via frontend optimisation</div></div>
+          <div class="metric"><div class="metric-value">30%</div><div class="metric-desc">Performance gain via API and query redesign</div></div>
+          <div class="metric"><div class="metric-value">3</div><div class="metric-desc">Legacy monoliths fully migrated</div></div>
+          <div class="metric"><div class="metric-value">↑↑</div><div class="metric-desc">Release cadence &amp; team maintainability</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">.NET Core</span><span class="tag">ASP.NET Core</span><span class="tag">Blazor</span><span class="tag">EF Core</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Microservices</span><span class="tag">SQL Server</span><span class="tag">OpenAPI</span><span class="tag">C#</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div>
+            <p class="project-company">Descartes Systems Group · Waterloo, Canada</p>
+            <h3 class="project-title">Secure API Platform &amp; Shared Service Libraries</h3>
+          </div>
+          <span class="project-period">Sep 2019 – Oct 2020</span>
+        </div>
+        <p class="project-desc">Built the API and service library foundation used across multiple product lines. This engagement established the architectural patterns that later underpinned the full platform modernisation in 2021–2025.</p>
+        <div class="case-blocks">
+          <div class="case-block">
+            <div class="case-block-label">🔴 The Problem</div>
+            <div class="case-block-text">Inconsistent API design and no shared service libraries across product teams, causing duplication, undocumented endpoints, and brittle integrations across the platform.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">🔧 The Approach</div>
+            <div class="case-block-text">Designed reusable REST APIs and shared libraries in ASP.NET Core. Introduced OpenAPI 3 documentation standards, structured logging frameworks, and secure authentication/authorisation patterns.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">✅ The Outcome</div>
+            <div class="case-block-text">Company-wide adoption of API documentation and logging standards. Shared libraries reduced duplication across product lines and became the foundation for the subsequent modernisation programme.</div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-value">OpenAPI 3</div><div class="metric-desc">Documentation standard adopted across all product teams</div></div>
+          <div class="metric"><div class="metric-value">Shared</div><div class="metric-desc">Reusable service libraries across multiple product lines</div></div>
+          <div class="metric"><div class="metric-value">Secure</div><div class="metric-desc">Auth/authz patterns set as internal engineering standard</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">ASP.NET Core</span><span class="tag">REST APIs</span><span class="tag">EF Core</span><span class="tag">OpenAPI 3</span><span class="tag">Structured Logging</span><span class="tag">C#</span><span class="tag">Auth &amp; Authz</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div>
+            <p class="project-company">EHT Group Ltd. · Kitchener, Canada</p>
+            <h3 class="project-title">Full Stack Analytics Dashboard Platform</h3>
+          </div>
+          <span class="project-period">Jan 2021 – Apr 2021</span>
+        </div>
+        <p class="project-desc">Designed and built a full-stack analytics dashboard from scratch — React/TypeScript frontend, Node.js (KOA) backend, PostgreSQL database — all containerised with Docker for consistent cross-environment deployments.</p>
+        <div class="case-blocks">
+          <div class="case-block">
+            <div class="case-block-label">🔴 The Problem</div>
+            <div class="case-block-text">No centralised dashboard for operational data. Manual reporting processes and inconsistent deployment environments creating friction between development and production.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">🔧 The Approach</div>
+            <div class="case-block-text">Built the full stack from scratch with React/TypeScript on the frontend, KOA on the backend, and PostgreSQL for storage. Containerised with Docker and established SOLID coding standards for the engineering team.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">✅ The Outcome</div>
+            <div class="case-block-text">Delivered a reliable containerised dashboard with improved UI/UX performance and consistent deployments. Junior developers onboarded to clean code and API documentation standards.</div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="metric-value">Docker</div><div class="metric-desc">Fully containerised dev-to-prod pipeline</div></div>
+          <div class="metric"><div class="metric-value">Full Stack</div><div class="metric-desc">End-to-end delivery from UI to database</div></div>
+          <div class="metric"><div class="metric-value">SOLID</div><div class="metric-desc">Standards established &amp; mentored across the team</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">KOA</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">REST API</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div>
+            <p class="project-company">Green PI Inc. · Kitchener, Canada</p>
+            <h3 class="project-title">IoT Wearable Projection System — Smart Glasses</h3>
+          </div>
+          <span class="project-period">May 2021 – Aug 2021</span>
+        </div>
+        <p class="project-desc">Engineered embedded software for an IoT-based wearable projection system on Raspberry Pi hardware, powering smart glasses with real-time image processing and projection capabilities.</p>
+        <div class="case-blocks">
+          <div class="case-block">
+            <div class="case-block-label">🔴 The Problem</div>
+            <div class="case-block-text">Hardware-software interfacing bottlenecks causing latency in real-time image processing, reducing the usability and reliability of the wearable projection system.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">🔧 The Approach</div>
+            <div class="case-block-text">Implemented real-time image processing pipelines in C++ and Python on Raspberry Pi, optimising hardware-software interfacing at the embedded layer to improve throughput.</div>
+          </div>
+          <div class="case-block">
+            <div class="case-block-label">✅ The Outcome</div>
+            <div class="case-block-text">Measurably improved hardware-software interfacing efficiency and system throughput, enabling reliable real-time projection performance for the smart glasses platform.</div>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">C++</span><span class="tag">Python</span><span class="tag">Raspberry Pi</span><span class="tag">IoT</span><span class="tag">Embedded Systems</span><span class="tag">Real-time Processing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section class="section" id="skills">
+  <div class="container">
+    <p class="section-label">Technical Expertise</p>
+    <h2 class="section-title">Core Skills</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-group">
+        <div class="skill-group-title">.NET &amp; Backend</div>
+        <div class="skill-list">
+          <span class="skill-item">C# / .NET Core</span>
+          <span class="skill-item">ASP.NET Core</span>
+          <span class="skill-item">EF Core / LINQ</span>
+          <span class="skill-item">REST API Design</span>
+          <span class="skill-item">OpenAPI / Swagger</span>
+          <span class="skill-item">Auth &amp; Authz</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Frontend &amp; Architecture</div>
+        <div class="skill-list">
+          <span class="skill-item">Blazor</span>
+          <span class="skill-item">React / TypeScript</span>
+          <span class="skill-item">Microservices</span>
+          <span class="skill-item">Clean Architecture</span>
+          <span class="skill-item">SOLID Principles</span>
+          <span class="skill-item">Node.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data &amp; Cloud</div>
+        <div class="skill-list">
+          <span class="skill-item">SQL Server / T-SQL</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">Azure</span>
+          <span class="skill-item">Azure DevOps</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">Git</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">DevOps &amp; Governance</div>
+        <div class="skill-list">
+          <span class="skill-item">CI/CD Pipelines</span>
+          <span class="skill-item">Build Stabilisation</span>
+          <span class="skill-item">Structured Logging</span>
+          <span class="skill-item">Legacy Modernization</span>
+          <span class="skill-item">Code Review</span>
+          <span class="skill-item">Technical Mentoring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section class="section" id="experience">
+  <div class="container">
+    <p class="section-label">Career History</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline fade-in">
+      <div class="timeline-item">
+        <div class="timeline-date">SEP 2021 – JUN 2025</div>
+        <div class="timeline-role">Senior Software Developer</div>
+        <div class="timeline-company">Descartes Systems Group · Waterloo, ON, Canada</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">MAY 2021 – AUG 2021</div>
+        <div class="timeline-role">Embedded Software Developer</div>
+        <div class="timeline-company">Green PI Inc. · Kitchener, ON, Canada</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">JAN 2021 – APR 2021</div>
+        <div class="timeline-role">Full Stack Developer</div>
+        <div class="timeline-company">EHT Group Ltd. · Kitchener, ON, Canada</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">SEP 2019 – OCT 2020</div>
+        <div class="timeline-role">Software Developer</div>
+        <div class="timeline-company">Descartes Systems Group · Waterloo, ON, Canada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Let's work together</h2>
+      <p>Available for .NET architecture engagements, legacy modernization, CI/CD governance, and long-term advisory roles.</p>
+      <a href="mailto:divyangdankhara007@outlook.com" class="btn">Get in touch →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Divyang Dankhara · Senior .NET Architect · <span>divyangdankhara007@outlook.com</span></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
 </html>
